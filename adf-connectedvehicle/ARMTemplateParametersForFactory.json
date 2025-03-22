@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-connectedvehicle"
+		},
+		"ls_adlsgen2_accountKey": {
+			"value": ""
+		},
+		"ls_adlsgen2_properties_typeProperties_url": {
+			"value": "https://saconnectedvehicleud.dfs.core.windows.net/"
+		},
+		"ls_akv_properties_typeProperties_baseUrl": {
+			"value": "https://KV-connectedvehicle.vault.azure.net/"
+		},
+		"ls_amzns3_properties_typeProperties_accessKeyId": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_akv",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "accesskeyaws"
+			}
+		},
+		"ls_azsqldb_properties_typeProperties_server": {
+			"value": "connectedvehicleserver.database.windows.net"
+		},
+		"ls_azsqldb_properties_typeProperties_database": {
+			"value": "connectedvehicledatabase"
+		},
+		"ls_azsqldb_properties_typeProperties_userName": {
+			"value": "gkadmin"
+		},
+		"trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/a680d083-036d-4aad-b087-4918c50144f4/resourceGroups/rg_connected_vehicle_ud/providers/Microsoft.Storage/storageAccounts/saconnectedvehicleud"
+		}
+	}
+}
