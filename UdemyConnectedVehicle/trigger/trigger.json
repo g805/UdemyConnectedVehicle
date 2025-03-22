@@ -1,0 +1,24 @@
+{
+	"name": "trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "StagingFoldertoAzureSqlDB",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/input/blobs/staging/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/a680d083-036d-4aad-b087-4918c50144f4/resourceGroups/rg_connected_vehicle_ud/providers/Microsoft.Storage/storageAccounts/saconnectedvehicleud",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

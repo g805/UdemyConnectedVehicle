@@ -1,0 +1,71 @@
+{
+	"name": "IngestionofAWSdatatoAzure",
+	"properties": {
+		"activities": [
+			{
+				"name": "AWS_to_AzureCloud",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*.json",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_amzns3",
+						"type": "DatasetReference",
+						"parameters": {
+							"folderpath": {
+								"value": "@concat(formatDateTime(utcNow(),'yyyy'),'/',formatDateTime(utcNow(),'MM'),'/',formatDateTime(utcNow(),'dd'),'/')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_adlsgen2",
+						"type": "DatasetReference",
+						"parameters": {
+							"folder": {
+								"value": "@concat('landing/',formatDateTime(utcNow(),'yyyy'),'/',formatDateTime(utcNow(),'MM'),'/',formatDateTime(utcNow(),'dd'),'/')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-03-22T08:39:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

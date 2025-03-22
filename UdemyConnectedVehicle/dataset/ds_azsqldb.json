@@ -1,0 +1,17 @@
+{
+	"name": "ds_azsqldb",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azsqldb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "vehicledata"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
