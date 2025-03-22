@@ -1,0 +1,24 @@
+{
+	"name": "ls_azsqldb",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "connectedvehicleserver.database.windows.net",
+			"database": "connectedvehicledatabase",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "gkadmin",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_akv",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "azuresqldbpassword"
+			}
+		}
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"name": "adf-connectedvehicle",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "57faf337-4adf-45c6-8bbe-129d95b60101",
+		"tenantId": "a5b09cd1-71a7-4121-9ab2-7b0a7c34f6b4"
+	}
+}
